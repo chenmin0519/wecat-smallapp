@@ -1,0 +1,127 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 头部搜索 -->
+  <view class="top-hander">
+    <view class="top-logo-view">
+      <image class="top-logo" src="{{logoUrl}}"></image>
+    </view>
+    <view class="top-serch">
+      <text class="regist-title">发布</text>
+    </view>
+    <view class="top-serch-view">
+      <image class="serch-img" src="{{serchUrl}}"></image>
+    </view>
+  </view>
+ <!-- 分割线 -->
+  <view class="border"></view>
+  <view class="form-title">
+    <text>基本信息</text>
+  </view>
+   <!-- 分割线 -->
+  <view class="border-2-9"></view>
+  <view class="row-name">
+    <text>详细地址信息</text>
+  </view>
+  <view class="row-input">
+    <view bindtap='selectDistrict' class='inpput-form form-text'>
+      <text class="form-text">{{areaInfo}}</text>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="border-2-6"></view>
+  <view class="row-name">
+    <text>详细地址信息</text>
+  </view>
+  <view class="row-input">
+    <view class='inpput-form'>
+      <input bindinput="handleInputAdress"  class= 'form-text info-input-form' placeholder="请填写" />
+    </view>
+  </view>
+   <!-- 分割线 -->
+  <view class="border-2-6"></view>
+  <view class="row-input">
+    <view class='inpput-item-form' bindtap='selectCategoryName'>
+      <text  class= 'info-input-form item' >类型</text>
+      <text class= 'form-text info-input-form item' style="display:block">{{categoryName}}</text>
+    </view>
+    <view class='inpput-item-form'>
+      <text  class= 'info-input-form item'>面积</text>
+      <input bindinput="handleInputarea" class= 'form-text info-input-form item' placeholder="请填写" /> <text class= 'form-text detail-info item' style="color:red">(平方厘米)</text>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="border-2-6"></view>
+  <view class="row-name">
+    <text>日人流量</text>
+  </view>
+  <view class="row-input">
+    <view class='inpput-form'>
+      <input bindinput="handleInputtrafficWas"  class= 'form-text info-input-form' placeholder="请填写" />
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="border-2-6"></view>
+  <view class="row-name">
+    <text>标题</text>
+  </view>
+  <view class="row-input">
+    <view class='inpput-form'>
+      <input bindinput="handleInputtitle"  class= 'form-text info-input-form' placeholder="请填写" />
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="border-2-6"></view>
+
+   <view class="form-title">
+    <text>图文信息</text>
+  </view>
+   <!-- 分割线 -->
+  <view class="border-2-9"></view>
+
+  
+</view>
+
+<!-- 地址 -->
+<view class="dialog-mask " style="z-index:11;visibility:{{typeMenuIsShow ? 'visible': 'hidden'}}" bindtap="hideCitySelected" />
+<!--城市三级联动-->
+<!--使用动画时不能wx:if="{{city.length>0&&isVisible}}" ，不能hidden=''属性否则无动画效果-->
+<view class="picker-view" animation="{{animationTypeMenu}}" style="visibility:{{typeMenuIsShow ? 'visible':'hidden'}}">
+  <view style="height:10% ;width:95%;margin-top:10rpx">
+    <text catchtap="typeCancel">取消</text>
+    <text style="float: right" catchtap="typeSure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 300px;" bindchange="typeChange" value="{{value}}" wx:key="">
+    <picker-view-column>
+      <view wx:for="{{typeEnums}}" class="picker-item">
+        {{item.enumName}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>
+
+<!-- 地址 -->
+<view class="dialog-mask " style="z-index:11;visibility:{{addressMenuIsShow ? 'visible': 'hidden'}}" bindtap="hideCitySelected" />
+<!--城市三级联动-->
+<!--使用动画时不能wx:if="{{city.length>0&&isVisible}}" ，不能hidden=''属性否则无动画效果-->
+<view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
+  <view style="height:10% ;width:95%;margin-top:10rpx">
+    <text catchtap="cityCancel">取消</text>
+    <text style="float: right" catchtap="citySure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 300px;" bindchange="cityChange" value="{{value}}" wx:key="">
+    <picker-view-column>
+      <view wx:for="{{provinces}}" class="picker-item">
+        {{item.areaName}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" class="picker-item" wx:key="">
+        {{item.areaName}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{areas}}" class="picker-item" wx:key="">
+        {{item.areaName}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

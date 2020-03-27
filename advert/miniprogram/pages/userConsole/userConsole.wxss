@@ -1,0 +1,76 @@
+.header-container {
+display: flex;
+height: 264rpx;
+background-color: #fff;
+align-items: center;
+position: relative;
+}
+
+.header-bg{
+width: 100%;
+height: 100%;
+}
+
+/* 名称和头像 */
+.userContent{
+position: absolute;
+z-index: 1;
+display: flex;
+align-items: center;
+width: 100%;
+height: 100%;
+box-sizing: border-box;
+padding: 34rpx 0 0 42rpx;
+}
+.userContent .txt { padding: 0 0 0 60rpx; width: 434rpx; color: #333; line-height: 50rpx;}
+.userContent .txt text { display: block;}
+.header-avatar {
+background-color: #fff;
+width: 114rpx;
+height: 114rpx;
+border-radius: 50%;
+overflow: hidden;
+}
+.mycard-sign{
+width: 34px;
+height: 34px;
+margin-left:20rpx;
+margin-top:32rpx;
+
+
+}
+
+.header-nickname {
+font-size: 30rpx;
+font-weight: bold;
+}
+.header-nicktel { color: #888; font-size: 24rpx;}
+
+/* 帐号管理和信息 */
+.header-userInfo{
+display: flex;
+height: 230rpx;
+width: 100rpx;
+justify-content: center;
+align-items: center;
+}
+
+.header-userInfo image{
+width:20rpx;
+height:34rpx;
+
+}
+
+.mycard-sign-nickname{
+color: #fff;
+font-size: 50rpx;
+}
+
+.themes .li { background: #FFF; padding: 32rpx 40rpx; display: flex; justify-content: space-between; margin-bottom: 30rpx;}
+.themes .icon { width: 40rpx; height: 40rpx;}
+.themes .icon image { display: block; width: 100%; height: 100%;}
+.themes .right { width: 600rpx; display: flex; justify-content: space-between; align-items: center;}
+.themes .tit { font-size: 30rpx; color: #666; font-weight: bold; line-height: 30rpx; margin-bottom: 20rpx;}
+.themes .xx { font-size: 24rpx; color: #888; line-height: 24rpx;}
+.themes .link { width: 20rpx; height: 34rpx; }
+.themes .link image { display: block; width: 100%; height: 100%;}

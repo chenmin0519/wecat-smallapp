@@ -1,0 +1,126 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 头部搜索 -->
+  <view class="top-hander">
+    <view class="top-logo-view">
+      <image class="top-logo" src="{{logoUrl}}"></image>
+    </view>
+    <view class="top-serch">
+      <input class="serch-input" name="serch"  placeholder="搜索" maxlength="11" type="tel" bindinput="getInput" /> 
+    </view>
+    <view class="top-serch-view">
+      <image class="serch-img" src="{{serchUrl}}"></image>
+    </view>
+  </view>
+
+ <!-- 分割线 -->
+  <view class="border"></view>
+
+ <!-- 轮播图 -->
+  <view class='carousel'> 
+  <swiper class='carousel_swiper' indicator-dots="true"     indicator-color="#f4f4f4" indicator-active-color="#4eb8b8" autoplay="true" interval='2000' circular='true'>
+    <block wx:for="{{carouselList}}" wx:key="key">
+      <swiper-item bindtap='chomeCarouselClick' data-url='{{item.url}}'>
+        <image class="carouselImg" src='{{host}}{{item.img}}' mode='aspectFill' ></image>
+      </swiper-item>
+    </block>
+  </swiper>
+ </view>
+
+  <!-- 主体标签 -->
+  <view class="context-index">
+    <block wx:for="{{homeImageList}}" wx:key="index" wx:for-item="item">
+      <view class="box-index" bindtap='getJavaDetail'>
+      <view class="box">
+          <image class="home-image" url="{{item.img}}"></image>
+          <view class="text-index">{{item.title}}</view>
+        </view>
+      </view>
+    </block>  
+  </view>
+ <!-- 分割线 -->
+  <view class="border"></view>
+
+  <!--Tab布局-->
+  <view class="swiper-tab"> 
+  <view class="swiper-tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">全部</view> 
+  <view class="swiper-tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">热门</view> 
+  <view class="swiper-tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">推荐</view> 
+</view> 
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{clientHeight?clientHeight-'40'+'px':'auto'}}" bindchange="bindChange" > 
+
+  <swiper-item> 
+    <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="onPullDownRefresh">
+    <view class='list'>
+        <block wx:for='{{firstList}}' wx:key='list' wx:for-item="item">
+          <view class="list_item">
+              <navigator url='details?id={{item.goods_id}}'>
+              <view class='img'>
+                <image src="{{host}}{{item.icon}}"  mode="scaleToFill"/>
+              </view>
+              <view class='info'>
+                <view class='title'>{{item.title}}</view>
+                <view class='price'>￥{{item.price}}</view>
+                <view class='num'>销量{{item.num}}</view>
+              </view>
+              </navigator>
+              <view class='clear'></view>
+          </view>
+        </block>
+        <view class="loading list_item"  hidden="{{!searchLoading}}">正在载入更多...</view>
+        <view class="loading complete list_item" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      </view>
+     
+    </scroll-view>
+  </swiper-item> 
+
+
+  <swiper-item> 
+   <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+   <view class='list'>
+      <block wx:for='{{secondList}}' wx:key='list' wx:for-item="item">
+        <view class="list_item">
+            <navigator url='details?id={{item.goods_id}}'>
+            <view class='img'>
+              <image src="{{host}}{{item.icon}}"  mode="scaleToFill"/>
+            </view>
+            <view class='info'>
+              <view class='title'>{{item.title}}</view>
+              <view class='price'>￥{{item.price}}</view>
+              <view class='num'>销量{{item.num}}</view>
+            </view>
+            </navigator>
+            <view class='clear'></view>
+          </view>
+        </block>
+      </view>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部    </view>
+    </scroll-view>
+  </swiper-item> 
+
+  <swiper-item> 
+   <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+   <view class='list'>
+      <block wx:for='{{thirdList}}' wx:key='list' wx:for-item="item">
+        <view class="list_item">
+            <navigator url='details?id={{item.goods_id}}'>
+            <view class='img'>
+              <image src="{{host}}{{item.icon}}"  mode="scaleToFill"/>
+            </view>
+            <view class='info'>
+              <view class='title'>{{item.title}}</view>
+              <view class='price'>￥{{item.price}}</view>
+              <view class='num'>销量{{item.num}}</view>
+            </view>
+            </navigator>
+            <view class='clear'></view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </swiper-item> 
+
+</swiper> 
+</view>

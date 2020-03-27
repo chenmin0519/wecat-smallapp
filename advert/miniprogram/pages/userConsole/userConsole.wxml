@@ -1,0 +1,50 @@
+<!--pages/userConsole/userConsole.wxml-->
+<view class="container">
+
+  <view class="header-container" bindtap="bindcenter">
+    <image class='header-bg' src = '../../images/back.png'></image>
+    <view class='userContent'>
+      <image bindtap='changePhotoImg' class="header-avatar" src="{{teachers.headimg}}" ></image>
+      <view class="txt">
+        <text class="header-nickname">{{teachers.name}}</text>
+        <text class="header-nicktel">{{teachers.mobile}}</text>
+      </view>
+      <view class='header-userInfo' bindcenter="personcenter">
+      <!--进入个人中心开始-->
+        <image src="../../images/some/code-cloud-callback-config.png"></image>
+      <!--进入个人中心结束-->
+      </view>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="border-4"></view>
+
+  <!--下边分条目-->
+  <view class="themes">
+    <view class="li" bindtap="bindcard">
+      <view class="icon"><image src="../../images/user.png"></image></view>
+        <view class="right">
+          <view class="txt">
+            <view class="tit">我的名片</view>
+            <view class="xx">用于编辑您的个人信息</view>
+          </view>
+          <view class="link">
+            <image src="../../images/logo.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="li" bindtap="bindstudent">
+      <view class="icon"><image src="../../images/user.png"></image></view>
+        <view class="right">
+          <view class="txt">
+            <view class="tit">我的订单</view>
+            <view class="xx">11111</view>
+          </view>
+        </view>
+        <view class="link">
+          <image src="../../images/user.png"></image>
+        </view>
+      </view>
+    </view>
+</view>

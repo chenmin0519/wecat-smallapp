@@ -1,0 +1,84 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 头部搜索 -->
+  <view class="top-hander">
+    <view class="top-logo-view">
+      <image class="top-logo" src="{{logoUrl}}"></image>
+    </view>
+    <view class="top-serch">
+      <text class="regist-title">授权</text>
+    </view>
+    <view class="top-serch-view">
+      <image class="serch-img" src="{{serchUrl}}"></image>
+    </view>
+  </view>
+
+ <!-- 分割线 -->
+  <view class="border"></view>
+<!-- 
+  <view wx:if="{{!success}}">
+      <view class='row-regist'>
+            <view class='info-regist'>
+                  <input  class= 'info-input1-regist' bindinput="handleInputPhone" placeholder="请输入你的手机号" />
+            </view>
+              <button class='button-regist' bindtap='doGetCode' disabled='{{disabled}}' style="background-color:{{color}}" >{{text}}</button>
+    </view>
+    <view class='row-regist'>
+            <view class='info-regist'>
+                  <input  class= 'info-input-regist' bindinput="handleVerificationCode" placeholder="请输入你的验证码" />
+            </view>
+    </view>
+      <view class='row-regist'>
+            <view class='info-regist'>
+                  <input type='password' class= 'info-input-regist' bindinput="handleNewChanges" placeholder="请输入你的密码" />
+            </view>
+    
+    </view>
+      <view class='row-regist'>
+            <view class='info-regist'>
+                  <input  type='password' class= 'info-input-regist' bindinput="handleNewChangesAgain" placeholder="请重新输入你的密码" />
+            </view>
+    
+    </view> -->
+   <view wx:if="{{success}}">
+    <button class='submit-regist'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取信息授权</button>
+    </view>
+    <view wx:if="{{!success}}">
+      <view class='row-regist'>
+        <view class='info-regist'>
+                    <input  class= 'info-input1-regist' bindinput="handleInputUserName" bindblur="blurUserName" bindfocus="focusUserName" placeholder="请输入你的用户名" />
+        </view>
+        <view wx:if="{{userNameERRDisabled}}">
+          <text class="err_text">{{userNameERRMes}}</text>
+        </view>
+      </view>
+
+      <view class='row-regist'>
+        <view class='info-regist'>
+                    <input  class= 'info-input1-regist' bindinput="handleInputPhone" bindblur="blurPhone" bindfocus="focusPhone" placeholder="请输入你的手机号" />
+        </view>
+        <view wx:if="{{phoneERRDisabled}}">
+          <text class="err_text">{{phoneERRMes}}</text>
+        </view>
+      </view>
+      <view class='row-regist'>
+        <view class='info-regist'>
+          <input type='password' class= 'info-input-regist' bindinput="handleNewChanges" bindblur="blurPas" bindfocus="focusPas" placeholder="请输入你的密码" />
+        </view>
+        <view wx:if="{{passwordERRDisabled}}">
+          <text class="err_text">{{passwordERRMes}}</text>
+        </view>
+      </view>
+      <view class='row-regist'>
+        <view class='info-regist'>
+              <input  type='password' class= 'info-input-regist' bindinput="handleNewChangesAgain" bindblur="blurPasAgain" bindfocus="focusPasAgain" placeholder="请重新输入你的密码" />
+        </view>
+         <view wx:if="{{passwordAgainERRDisabled}}">
+          <text class="err_text">{{passwordAgainERRMes}}</text>
+        </view>
+      </view>
+      <button class='submit-regist' open-type="getUserInfo"
+  bindgetuserinfo="bindGetUserInfo">确认授权登录</button>
+    </view>
+</view>
